@@ -54,6 +54,9 @@ interface IPreferences {
 
     val playButtonRegion: Region
 
+
+    val append: IAppendPreferences
+
     val servant: IServantEnhancementPreferences
 
     var emptyEnhance: Boolean

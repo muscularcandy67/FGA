@@ -91,6 +91,8 @@ enum class Images {
     SkillInsufficientMaterials,
     SkillMenuBanner,
 
+    AppendBanner,
+    AppendLock,
     ServantAutoSelect,
     ServantAutoSelectOff,
     ServantMaxLevel,

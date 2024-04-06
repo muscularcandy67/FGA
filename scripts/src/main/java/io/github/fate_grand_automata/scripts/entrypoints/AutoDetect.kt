@@ -55,6 +55,16 @@ class AutoDetect @Inject constructor(
             ).exists() ->
                 ScriptModeEnum.ServantLevel
 
+
+            images[Images.AppendBanner] in locations.enhancementBannerRegion -> {
+                autoSetup.checkIfEmptyEnhance()
+                autoSetup.checkAppendLocks()
+                ScriptModeEnum.Append
+            }
+
+            images[Images.EmptyEnhance] in locations.emptyEnhanceRegion ->
+                ScriptModeEnum.CEBomb
+
             else -> ScriptModeEnum.Battle
         }
     }

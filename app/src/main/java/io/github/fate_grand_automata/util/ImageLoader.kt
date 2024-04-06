@@ -121,6 +121,8 @@ class ImageLoader @Inject constructor(
         Images.SkillUse -> "skill_use.png"
         Images.RankUp -> "rank_up.png"
         Images.Close -> "close.png"
+        Images.AppendBanner -> "append_banner.png"
+        Images.AppendLock -> "append_lock.png"
 
         Images.CraftEssenceBannerOn -> "craft_essence_banner_on.png"
         Images.CraftEssenceBannerOff -> "craft_essence_banner_off.png"

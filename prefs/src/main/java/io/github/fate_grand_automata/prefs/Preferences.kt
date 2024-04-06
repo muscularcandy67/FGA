@@ -3,6 +3,7 @@ package io.github.fate_grand_automata.prefs
 import io.github.fate_grand_automata.prefs.core.PrefsCore
 import io.github.fate_grand_automata.prefs.core.map
 import io.github.fate_grand_automata.scripts.enums.GameServer
+import io.github.fate_grand_automata.scripts.prefs.IAppendPreferences
 import io.github.fate_grand_automata.scripts.prefs.IBattleConfig
 import io.github.fate_grand_automata.scripts.prefs.ICraftEssencePreferences
 import io.github.fate_grand_automata.scripts.prefs.IFriendGachaPreferences
@@ -112,6 +113,8 @@ class PreferencesImpl @Inject constructor(
     override var treatSupportLikeOwnServant by prefs.treatSupportLikeOwnServant
 
     override var receiveEmbersWhenGiftBoxFull by prefs.receiveEmbersWhenGiftBoxFull
+
+    override val append: IAppendPreferences = AppendPrefs(prefs.append)
 
     override val craftEssence: ICraftEssencePreferences =
         CraftEssencePrefs(prefs.craftEssence)

@@ -7,6 +7,8 @@ enum class ScriptModeEnum {
     PresentBox,
     SupportImageMaker,
     CEBomb,
+    Append,
     Skill,
     ServantLevel,
+
 }

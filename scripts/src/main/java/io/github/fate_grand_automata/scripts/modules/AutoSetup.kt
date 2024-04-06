@@ -89,4 +89,12 @@ class AutoSetup @Inject constructor(
         prefs.skill.isSkillThreeAvailable = skill3Text != null
     }
 
+    fun checkAppendLocks(){
+        useSameSnapIn {
+            prefs.append.appendOneLocked = images[Images.AppendLock] in locations.append.lockLocations(0)
+            prefs.append.appendTwoLocked = images[Images.AppendLock] in locations.append.lockLocations(1)
+            prefs.append.appendThreeLocked = images[Images.AppendLock] in locations.append.lockLocations(2)
+    }
+        }
+
 }

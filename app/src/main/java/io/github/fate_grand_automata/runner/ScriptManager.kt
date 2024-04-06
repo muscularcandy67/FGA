@@ -15,6 +15,7 @@ import io.github.fate_grand_automata.di.script.ScriptComponentBuilder
 import io.github.fate_grand_automata.di.script.ScriptEntryPoint
 import io.github.fate_grand_automata.di.service.ServiceCoroutineScope
 import io.github.fate_grand_automata.prefs.core.PrefsCore
+import io.github.fate_grand_automata.scripts.entrypoints.AutoAppend
 import io.github.fate_grand_automata.scripts.entrypoints.AutoBattle
 import io.github.fate_grand_automata.scripts.entrypoints.AutoCEBomb
 import io.github.fate_grand_automata.scripts.entrypoints.AutoFriendGacha
@@ -26,6 +27,7 @@ import io.github.fate_grand_automata.scripts.entrypoints.SupportImageMaker
 import io.github.fate_grand_automata.scripts.enums.GameServer
 import io.github.fate_grand_automata.scripts.enums.ScriptModeEnum
 import io.github.fate_grand_automata.scripts.prefs.IPreferences
+import io.github.fate_grand_automata.ui.exit.AppendExit
 import io.github.fate_grand_automata.ui.exit.BattleExit
 import io.github.fate_grand_automata.ui.exit.SkillExit
 import io.github.fate_grand_automata.ui.launcher.ScriptLauncher
@@ -100,6 +102,38 @@ class ScriptManager @Inject constructor(
                 setOnDismissListener {
                     composeView.close()
                     continuation.resume(Unit)
+                }
+            }
+        }
+    }
+
+    private suspend fun showAutoAppendMenu(
+        context: Context,
+        exception: AutoAppend.ExitException
+    ) = withContext(Dispatchers.Main) {
+        suspendCancellableCoroutine<Unit> { continuation ->
+            var dialog: DialogInterface? = null
+
+            val composeView = FakedComposeView(context) {
+                AppendExit(
+                    exception = exception,
+                    prefs = preferences,
+                    onClose = { dialog?.dismiss() },
+                    onCopy = { clipboardManager.set(context, exception) }
+                )
+            }
+            dialog = showOverlayDialog(context) {
+                setView(composeView.view)
+
+                setOnDismissListener {
+                    uiStateHolder.isPlayButtonEnabled = true
+                    composeView.close()
+
+                    try {
+                        continuation.resume(Unit)
+                    } catch (e: IllegalStateException) {
+                        // Ignore exception on resuming twice
+                    }
                 }
             }
         }
@@ -255,7 +289,12 @@ class ScriptManager @Inject constructor(
                 messages.notify(msg)
                 messageBox.show(scriptExitedString, msg)
             }
-
+            is AutoAppend.ExitException -> {
+                if (e.reason !is AutoAppend.ExitReason.Abort) {
+                    messages.notify(scriptExitedString)
+                }
+                showAutoAppendMenu(service, e)
+            }
             is AutoBattle.ExitException -> {
                 preferences.hidePlayButton = false
 
@@ -346,8 +385,10 @@ class ScriptManager @Inject constructor(
             ScriptModeEnum.PresentBox -> entryPoint.giftBox()
             ScriptModeEnum.SupportImageMaker -> entryPoint.supportImageMaker()
             ScriptModeEnum.CEBomb -> entryPoint.ceBomb()
+            ScriptModeEnum.Append -> entryPoint.append()
             ScriptModeEnum.Skill -> entryPoint.skill()
             ScriptModeEnum.ServantLevel -> entryPoint.servantLevel()
+
         }
 
     enum class PauseAction {
