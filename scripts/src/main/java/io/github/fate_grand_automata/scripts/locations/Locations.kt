@@ -147,18 +147,6 @@ class Locations @Inject constructor(
     }
 
 
-    val getInsufficientQPRegion = when (gameServer) {
-        is GameServer.En -> when (isWide) {
-            true -> Region(-500, 195, 405, 44).xFromCenter()
-            false -> Region(-499, 222, 405, 44).xFromCenter()
-        }
-        // JP option
-        else -> when (isWide) {
-            true -> Region(-502, 195, 397, 47).xFromCenter()
-            false -> Region(-500, 222, 397, 47).xFromCenter()
-        }
-    }
-
     val emptyEnhanceRegion = when (isWide) {
         true -> Region(-1100, 600, 400, 400).xFromCenter()
         false -> Region(200, 600, 400, 400)
@@ -191,11 +179,6 @@ class Locations @Inject constructor(
             true -> Region(-499, 200, 597, 40).xFromCenter()
             false -> Region(-501, 228, 597, 43).xFromCenter()
         }
-    }
-
-    val emptyEnhanceRegion = when (isWide) {
-        true -> Region(-1100, 600, 400, 400).xFromCenter()
-        false -> Region(200, 600, 400, 400)
     }
 
     val tempServantEnhancementRegion = Region(252, 1096, 301, 57).xFromCenter()
