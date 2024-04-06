@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -49,7 +49,7 @@ fun lotteryLauncher(
             style = MaterialTheme.typography.titleLarge
         )
 
-        Divider(
+        HorizontalDivider(
             modifier = Modifier
                 .padding(5.dp)
                 .padding(bottom = 16.dp)
@@ -108,7 +108,7 @@ fun lotteryLauncher(
             Text(
                 stringResource(R.string.p_return_to_lottery),
                 style = MaterialTheme.typography.bodyMedium,
-                color = when(receiveEmbers) {
+                color = when (receiveEmbers) {
                     true -> MaterialTheme.colorScheme.secondary
                     false -> MaterialTheme.colorScheme.secondary.copy(alpha = 0.3f)
                 },

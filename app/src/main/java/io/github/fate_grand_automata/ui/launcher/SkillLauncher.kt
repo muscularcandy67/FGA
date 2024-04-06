@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Checkbox
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.Switch
@@ -132,7 +132,7 @@ fun skillLauncher(
                     text = stringResource(id = R.string.skill_upgrade),
                     style = MaterialTheme.typography.headlineSmall
                 )
-                Divider()
+                HorizontalDivider()
             }
         }
         if (emptyServant){
