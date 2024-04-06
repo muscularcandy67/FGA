@@ -76,7 +76,6 @@ enum class Images {
     Close,
 
     SkillInsufficientQP,
-    Execute,
     Ok,
     SkillInsufficientMaterials,
     SkillMenuBanner,
