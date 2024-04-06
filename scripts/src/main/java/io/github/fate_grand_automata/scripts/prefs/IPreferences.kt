@@ -1,5 +1,6 @@
 package io.github.fate_grand_automata.scripts.prefs
 
+import io.github.fate_grand_automata.scripts.enums.BattleConfigListSortEnum
 import io.github.fate_grand_automata.scripts.enums.GameServer
 import io.github.fate_grand_automata.scripts.enums.ScriptModeEnum
 import io.github.lib_automata.PlatformPrefs
@@ -51,6 +52,9 @@ interface IPreferences {
 
     val craftEssence: ICraftEssencePreferences
     val friendGacha: IFriendGachaPreferences
+
+
+    var configListSort: BattleConfigListSortEnum
 
     val playButtonRegion: Region
 

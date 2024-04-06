@@ -114,6 +114,8 @@ class PreferencesImpl @Inject constructor(
 
     override var receiveEmbersWhenGiftBoxFull by prefs.receiveEmbersWhenGiftBoxFull
 
+    override var configListSort by prefs.configListSort
+
     override val append: IAppendPreferences = AppendPrefs(prefs.append)
 
     override val craftEssence: ICraftEssencePreferences =
