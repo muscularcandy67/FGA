@@ -14,13 +14,6 @@ class AutoSetup @Inject constructor(
     private val scale: Scale
 ) : IFgoAutomataApi by api {
 
-
-    fun checkIfEmptyEnhance() {
-        val emptyEnhance = images[Images.EmptyEnhance] in locations.emptyEnhanceRegion
-
-        prefs.emptyEnhance = emptyEnhance
-    }
-
     /**
      * This fetches the play button's region and scale it to the script's scale.
      *

@@ -118,9 +118,7 @@ class PreferencesImpl @Inject constructor(
 
     override val friendGacha: IFriendGachaPreferences =
         FriendGachaPrefs(prefs.friendGacha)
-
-    override var emptyEnhance by prefs.emptyEnhance
-
+    
     override val playButtonRegion: Region by prefs.playButtonRegion
 
     override var loopIntoLotteryAfterPresentBox by prefs.loopIntoLotteryAfterPresentBox
