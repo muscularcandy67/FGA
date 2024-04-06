@@ -91,7 +91,10 @@ class AutoBattle @Inject constructor(
 
     private var canScreenshotBondCE = false
 
+    private var isCommandCodeReward = false
+
     private var isQuestClose = false
+
 
     override fun script(): Nothing {
         try {
@@ -194,6 +197,7 @@ class AutoBattle @Inject constructor(
             { withdraw.needsToWithdraw() } to { withdraw.withdraw() },
             { needsToStorySkip() } to { skipStory() },
             { isFriendRequestScreen() } to { skipFriendRequestScreen() },
+            { isCommandCodeReward() } to { commandCodeReward() },
             { isBond10CEReward() } to { bond10CEReward() },
             { isCeRewardDetails() } to { ceRewardDetails() },
             { isDeathAnimation() } to { locations.battle.battleSafeMiddleOfScreenClick.click() },
@@ -280,6 +284,14 @@ class AutoBattle @Inject constructor(
         result()
     }
 
+    private fun isCommandCodeReward() =
+        locations.commandCodeRegion.exists(images[Images.CommandCodeReward], similarity = 0.75)
+
+    private fun commandCodeReward() {
+        locations.scriptArea.center.click()
+        isCommandCodeReward = true
+    }
+
     private fun isBond10CEReward() =
         locations.resultCeRewardRegion.exists(images[Images.Bond10Reward], similarity = 0.75)
 
@@ -305,13 +317,17 @@ class AutoBattle @Inject constructor(
             .count { it.exists(images[Images.ServantExist], similarity = 0.70) } in 1..2
 
     private fun ceRewardDetails() {
-        if (prefs.stopOnCEGet) {
-            // Count the current run
-            state.nextRun()
+        if (isCommandCodeReward){
+            isCommandCodeReward = false
+        } else {
+            if (prefs.stopOnCEGet) {
+                // Count the current run
+                state.nextRun()
 
-            throw BattleExitException(ExitReason.CEGet)
-        } else messages.notify(ScriptNotify.CEGet)
-
+                throw BattleExitException(ExitReason.CEGet)
+            } else messages.notify(ScriptNotify.CEGet)
+        }
+        
         locations.resultCeRewardCloseClick.click()
     }
 

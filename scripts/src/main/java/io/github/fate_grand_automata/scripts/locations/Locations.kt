@@ -187,5 +187,7 @@ class Locations @Inject constructor(
 
     val tempServantEnhancementLocation = Location(402, 1124).xFromCenter()
 
+    val commandCodeRegion = Region(-144, 1212, 14, 18).xFromCenter()
+
     val animationSkipLocation = menuStorySkipClick - Location(200, 0)
 }

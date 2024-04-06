@@ -106,5 +106,6 @@ enum class Images {
      */
     OkKR,
     Execute,
+    CommandCodeReward,
     CriticalStarExist
 }

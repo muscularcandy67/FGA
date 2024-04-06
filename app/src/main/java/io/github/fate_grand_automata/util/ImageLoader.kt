@@ -151,6 +151,8 @@ class ImageLoader @Inject constructor(
         Images.ServantAscensionBanner -> "servant_ascension_banner.png"
         Images.ServantAscensionReturnToLevel -> "servant_ascension_return_to_level.png"
         Images.OkKR -> "ok-kr.png"
+        Images.Execute -> "execute.png"
+        Images.CommandCodeReward -> "command_code_reward.png"
         Images.CriticalStarExist -> "critical_star_exist.png"
     }
 
