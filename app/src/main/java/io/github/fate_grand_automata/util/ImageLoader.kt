@@ -122,8 +122,19 @@ class ImageLoader @Inject constructor(
         Images.RankUp -> "rank_up.png"
         Images.Close -> "close.png"
 
-        Images.EmptyEnhance -> "empty_enhance.png"
+        Images.CraftEssenceBannerOn -> "craft_essence_banner_on.png"
+        Images.CraftEssenceBannerOff -> "craft_essence_banner_off.png"
+        Images.CraftEssenceDisplaySmall -> "craft_essence_display_small.png"
+        Images.CraftEssenceStar -> "craft_essence_ce_star.png"
+        Images.CraftEssenceFodderCEFilterOff -> "craft_essence_fodder_ce_filter_off.png"
+        Images.CraftEssenceFodderSelectedCELocked -> "craft_essence_selected_ce_locked.png"
+        Images.CraftEssenceLock -> "craft_essence_lock.png"
+        Images.CraftEssenceOn -> "craft_essence_sort_on.png"
         Images.Ok -> "ok.png"
+        Images.FPCENotice -> "fp_ce_notice.png"
+
+
+        Images.EmptyEnhance -> "empty_enhance.png"
         Images.Execute -> "execute.png"
         Images.SkillMenuBanner -> "skill_menu_banner.png"
         Images.SkillInsufficientMaterials -> "skill_insufficient_mats.png"

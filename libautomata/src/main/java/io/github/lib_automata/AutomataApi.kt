@@ -57,6 +57,11 @@ interface AutomataApi {
 
     fun Region.detectText(outlinedText: Boolean = false): String
 
+
+    fun Location.longPress(duration: Int = 2000)
+
+    fun Region.longPress(duration: Int = 2000)
+
     fun Region.detectNumberFontText(outlinedText: Boolean = false): String
 
     fun Region.detectNumVarBg(outlinedText: Boolean = false): String
@@ -72,4 +77,8 @@ interface AutomataApi {
         requireAll: Boolean = false
     ): Boolean
 
+    fun longPressAndSwipe(
+        clicksArray: List<List<Location>>,
+        chunked: Int
+    )
 }

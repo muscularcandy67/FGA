@@ -40,14 +40,20 @@ class AutoDetect @Inject constructor(
             }
 
             mapOf(
+                images[Images.CraftEssenceBannerOn] to locations.ceBomb.ceBannerOnRegion,
+                images[Images.CraftEssenceBannerOff] to locations.ceBomb.ceBannerOffRegion
+            ).exists() -> {
+                autoSetup.checkIfEmptyEnhance()
+                autoSetup.checkIfCanAutomaticDisplayChangeInCE()
+                ScriptModeEnum.CEBomb
+            }
+
+            mapOf(
                 images[Images.ServantAutoSelect] to locations.servant.servantAutoSelectRegion,
                 images[Images.ServantAutoSelectOff] to locations.servant.servantAutoSelectRegion,
                 images[Images.ServantAscensionBanner] to locations.enhancementBannerRegion
             ).exists() ->
                 ScriptModeEnum.ServantLevel
-
-            images[Images.EmptyEnhance] in locations.emptyEnhanceRegion ->
-                ScriptModeEnum.CEBomb
 
             else -> ScriptModeEnum.Battle
         }

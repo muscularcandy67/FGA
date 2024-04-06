@@ -75,8 +75,19 @@ enum class Images {
     RankUp,
     Close,
 
-    SkillInsufficientQP,
+    CraftEssenceBannerOn,
+    CraftEssenceBannerOff,
+    CraftEssenceDisplaySmall,
+    CraftEssenceStar,
+    CraftEssenceFodderCEFilterOff,
+    CraftEssenceFodderSelectedCELocked,
+    CraftEssenceLock,
+    CraftEssenceOn,
     Ok,
+    FPCENotice,
+
+
+    SkillInsufficientQP,
     SkillInsufficientMaterials,
     SkillMenuBanner,
 
