@@ -177,7 +177,7 @@ fun battleLauncher(
     if (refillResources.size > 1) {
         refillResources = setOf(refillResources.first())
     }
-    val availableRefills = RefillResourceEnum.values()
+    val availableRefills = RefillResourceEnum.entries
         .filter { it != RefillResourceEnum.Bronze || bronzeApplesEnabled }
         .filterNot { it == RefillResourceEnum.SQ && hideSQInAPResources }
 

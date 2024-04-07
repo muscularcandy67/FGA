@@ -247,7 +247,7 @@ private fun SelectSpamMode(
     val dialog = listDialog(
         selected = selected,
         onSelectedChange = onSelectChange,
-        entries = SpamEnum.values().associateWith { stringResource(it.stringRes) },
+        entries = SpamEnum.entries.associateWith { stringResource(it.stringRes) },
         title = stringResource(R.string.spam)
     )
 
@@ -269,7 +269,7 @@ private fun SelectTarget(
     val dialog = listDialog(
         selected = selected,
         onSelectedChange = onSelectChange,
-        entries = SkillSpamTarget.values().associateWith { it.toString() },
+        entries = SkillSpamTarget.entries.associateWith { it.toString() },
         title = stringResource(R.string.spam_target)
     )
 
