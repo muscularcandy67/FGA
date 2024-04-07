@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -138,7 +137,7 @@ fun fpLauncher(
                 }
             }
             item {
-                Divider(modifier = Modifier.padding(vertical = 4.dp))
+                HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
                 Row(
                     verticalAlignment = Alignment.Top,
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -198,7 +197,7 @@ fun fpLauncher(
                 }
             }
             item {
-                Divider(modifier = Modifier.padding(vertical = 4.dp))
+                HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
             }
             if (shouldCreateCEBombAfterSummon) {
                 item {
@@ -253,7 +252,7 @@ fun fpLauncher(
                                         show = skipSortDetection,
                                         text = stringResource(id = R.string.ce_bomb_skip_sort_reminder)
                                     )
-                                    Divider(
+                                    HorizontalDivider(
                                         modifier = Modifier.padding(vertical = 1.dp, horizontal = 2.dp)
                                     )
                                     filterSettings(
