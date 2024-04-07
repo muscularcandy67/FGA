@@ -50,7 +50,7 @@ class CardParser @Inject constructor(
         val regex = "\\d".toRegex()
         val matchResult = regex.find(percentage)
         val digit = matchResult?.value?.toInt()
-        return if (digit == 0) 10 else digit ?: -1
+        return if (digit == 0) 10 else digit ?: 1
     }
 
     private fun CommandCard.Face.isStunned(): Boolean {
@@ -87,7 +87,7 @@ class CardParser @Inject constructor(
         return CardTypeEnum.Unknown
     }
 
-    fun parse(readCriticalStarPercentage: Boolean = false): List<ParsedCard> {
+    fun parse(readCriticalStar: Boolean = false): List<ParsedCard> {
         val cardsGroupedByServant = servantTracker.faceCardsGroupedByServant()
 
         val cards = CommandCard.Face.list
@@ -103,9 +103,9 @@ class CardParser @Inject constructor(
                 val hasCriticalStar = it.hasCriticalStar()
 
                 val starPercentage = when {
-                    hasCriticalStar && readCriticalStarPercentage -> it.readCriticalStarPercentage()
+                    hasCriticalStar && readCriticalStar -> it.readCriticalStarPercentage()
                     hasCriticalStar -> 1
-                    else -> -1
+                    else -> 0
                 }
 
                 val servant = cardsGroupedByServant

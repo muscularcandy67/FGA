@@ -18,26 +18,9 @@ class FaceCardPriority @Inject constructor(
     private fun applyCardPriority(
         cards: List<ParsedCard>,
         stage: Int
-    ): List<ParsedCard> {
-        val sortedCards = cards
-            .sortedWith(
-                compareByDescending<ParsedCard> { parsedCard ->
-                    /**
-                     * Added sorting criteria for critical stars.
-                     * Cards with critical stars and has affinity of Weak are prioritized.
-                     */
-                    when {
-                        parsedCard.affinity == CardAffinityEnum.Weak && parsedCard.criticalPercentage > 7 -> 4
-                        parsedCard.affinity == CardAffinityEnum.Weak && parsedCard.criticalPercentage in 1..7 -> 3
-                        parsedCard.affinity == CardAffinityEnum.Normal && parsedCard.criticalPercentage > 0 -> 2
-                        else -> 1
-                    }
-                }.thenBy {
-                    it.type
-                }
-            )
+    ): List<ParsedCard> {           
 
-        val groupedByScore = sortedCards.groupBy { CardScore(it.type, it.affinity) }
+        val groupedByScore = cards.groupBy { CardScore(it.type, it.affinity) }
 
         return cardPriority
             .atWave(wave = stage)
@@ -45,6 +28,21 @@ class FaceCardPriority @Inject constructor(
                 groupedByScore[cardScore]
             }
             .flatten()
+            .sortedWith(
+                compareByDescending<ParsedCard> { parsedCard ->
+                    /**
+                     * Added sorting criteria for critical stars.
+                     * Cards with critical stars and has affinity of Weak are prioritized.
+                     */
+                    when {
+                        parsedCard.affinity == CardAffinityEnum.Weak && parsedCard.criticalPercentage > 7 -> 5
+                        parsedCard.affinity == CardAffinityEnum.Weak && parsedCard.criticalPercentage in 0..7 -> 4
+                        parsedCard.affinity == CardAffinityEnum.Normal && parsedCard.criticalPercentage > 7 -> 3
+                        parsedCard.affinity == CardAffinityEnum.Normal && parsedCard.criticalPercentage in 0..7 -> 2
+                        else -> 1
+                    }
+                }
+            )
     }
 
     private fun applyServantPriority(
