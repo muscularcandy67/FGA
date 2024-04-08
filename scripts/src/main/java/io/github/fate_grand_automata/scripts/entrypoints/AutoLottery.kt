@@ -67,7 +67,7 @@ class AutoLottery @Inject constructor(
 
             moveToPresentBox?.region?.click()
 
-            1.seconds.wait()
+            3.seconds.wait()
             try {
                 giftBox.script()
             } catch (e: AutoGiftBox.ExitException) {
@@ -94,8 +94,9 @@ class AutoLottery @Inject constructor(
                     }
                 }
             }
-
         }
+
+        
         if (prefs.loopIntoLotteryAfterPresentBox) {
             return
         }
