@@ -14,7 +14,7 @@ interface IBattleConfig {
     var name: String
     var skillCommand: String
     var cardPriority: CardPriorityPerWave
-    val useCriticalStarPriority: Boolean
+    val readCriticalStarPriority: Boolean
     val useServantPriority: Boolean
     val servantPriority: ServantPriorityPerWave
     val rearrangeCards: List<Boolean>

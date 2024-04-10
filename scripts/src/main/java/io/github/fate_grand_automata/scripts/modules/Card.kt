@@ -27,8 +27,8 @@ class Card @Inject constructor(
 ) : IFgoAutomataApi by api {
 
     fun readCommandCards(): List<ParsedCard> = useSameSnapIn {
-        parser.parse(
-            readCriticalStar = battleConfig.useCriticalStarPriority
+        parser.parseCommandCards(
+            readCriticalStar = battleConfig.readCriticalStarPriority
         )
     }
 
