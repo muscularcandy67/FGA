@@ -154,6 +154,7 @@ class ImageLoader @Inject constructor(
         Images.Execute -> "execute.png"
         Images.CommandCodeReward -> "command_code_reward.png"
         Images.CriticalStarExist -> "critical_star_exist.png"
+        Images.SupportBlankCE -> "support_blank_ce.png"
     }
 
     override operator fun get(img: Images, gameServer: GameServer?): Pattern = synchronized(regionCachedPatterns) {

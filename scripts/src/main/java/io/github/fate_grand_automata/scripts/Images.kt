@@ -107,5 +107,6 @@ enum class Images {
     OkKR,
     Execute,
     CommandCodeReward,
-    CriticalStarExist
+    CriticalStarExist,
+    SupportBlankCE
 }
